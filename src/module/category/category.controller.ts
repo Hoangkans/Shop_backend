@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Put, Param, Body } from '@nestjs/common';
-import { CategoriesService } from 'src/category/category.service';
+import { CategoriesService } from 'src/module/category/category.service';
 import {
   CreateCategoryDto,
   UpdateCategoryDto,

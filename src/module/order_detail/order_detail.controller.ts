@@ -7,7 +7,7 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { OrderDetailService } from 'src/order_detail/order_detail.service';
+import { OrderDetailService } from 'src/module/order_detail/order_detail.service';
 import { CreateOrderDetailDto } from 'src/shared/database/mongo/dto/order_detail.dto';
 
 @Controller('order-detail')

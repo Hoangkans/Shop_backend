@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ShoppingCartController } from 'src/shopping_cart/shopping.controller';
-import { ShoppingCartService } from 'src/shopping_cart/shopping.service';
+import { ShoppingCartController } from 'src/module/shopping_cart/shopping.controller';
+import { ShoppingCartService } from 'src/module/shopping_cart/shopping.service';
 import { ShoppingCartSchema } from 'src/shared/database/mongo/schemas/shopping_cart.schema';
 
 @Module({

@@ -8,7 +8,7 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { UsersService } from 'src/user/user.service';
+import { UsersService } from 'src/module/user/user.service';
 import {
   CreateUserDto,
   UpdateUserDto,

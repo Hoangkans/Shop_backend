@@ -8,7 +8,7 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { ProductsService } from 'src/product/product.service';
+import { ProductsService } from 'src/module/product/product.service';
 import {
   CreateProductDto,
   UpdateProductDto,

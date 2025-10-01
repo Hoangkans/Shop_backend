@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UsersController } from 'src/user/user.controller';
-import { UsersService } from 'src/user/user.service';
+import { UsersController } from 'src/module/user/user.controller';
+import { UsersService } from 'src/module/user/user.service';
 import { UserSchema } from 'src/shared/database/mongo/schemas/user.schema';
 import { RoleSchema } from 'src/shared/database/mongo/schemas/role.schema';
 import { UserRoleSchema } from 'src/shared/database/mongo/schemas/user-role.schema';

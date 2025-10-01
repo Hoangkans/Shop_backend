@@ -6,8 +6,10 @@ import {
   Delete,
   Param,
   Body,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
-import { ShoppingCartService } from 'src/shopping_cart/shopping.service';
+import { ShoppingCartService } from 'src/module/shopping_cart/shopping.service';
 import {
   CreateCartItemDto,
   UpdateCartItemDto,
@@ -15,7 +17,7 @@ import {
 
 @Controller('shopping-cart')
 export class ShoppingCartController {
-  constructor(private readonly shoppingCartService: ShoppingCartService) {}
+  constructor(private shoppingCartService: ShoppingCartService) {}
 
   @Get(':userId')
   async findAllByUser(@Param('userId') userId: string) {
@@ -23,18 +25,20 @@ export class ShoppingCartController {
   }
 
   @Post()
+  @UsePipes(new ValidationPipe())
   async addItem(@Body() createCartItemDto: CreateCartItemDto) {
     return this.shoppingCartService.addItem(createCartItemDto);
   }
 
   @Put(':id/quantity')
+  @UsePipes(new ValidationPipe())
   async updateQuantity(
     @Param('id') id: string,
     @Body() updateCartItemDto: UpdateCartItemDto,
   ) {
     return this.shoppingCartService.updateQuantity(
       id,
-      updateCartItemDto.quantity || 1,
+      updateCartItemDto.quantity,
     );
   }
 

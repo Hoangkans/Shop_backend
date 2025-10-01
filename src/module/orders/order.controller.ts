@@ -8,7 +8,7 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { OrderService } from 'src/orders/order.service';
+import { OrderService } from 'src/module/orders/order.service';
 import {
   CreateOrderDto,
   UpdateOrderDto,
@@ -16,28 +16,30 @@ import {
 
 @Controller('orders')
 export class OrdersController {
-  constructor(private readonly orderService: OrderService) {}
+  constructor(private ordersService: OrderService) {}
 
   @Get()
   async findAll() {
-    return this.orderService.findAll();
+    return this.ordersService.findAll();
   }
 
-  @Get('user/:userId')
+  @Get(':userId')
   async findByUser(@Param('userId') userId: string) {
-    return this.orderService.findByUser(userId);
+    return this.ordersService.findByUser(userId);
   }
 
   @Post()
+  @UsePipes(new ValidationPipe())
   async create(@Body() createOrderDto: CreateOrderDto) {
-    return this.orderService.create(createOrderDto);
+    return this.ordersService.create(createOrderDto);
   }
 
   @Put(':id/status')
+  @UsePipes(new ValidationPipe())
   async updateStatus(
     @Param('id') id: string,
     @Body() updateOrderDto: UpdateOrderDto,
   ) {
-    return this.orderService.updateStatus(id, updateOrderDto.status || '');
+    return this.ordersService.updateStatus(id, updateOrderDto.status);
   }
 }
