@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './module/auth/auth.module';
 import { UserModule } from './module/user/user.module';
 import { ProductModule } from './module/product/product.module';
 import { CategoriesModule } from './module/category/category.module';
@@ -16,9 +16,12 @@ import { ShoppingCartModule } from './module/shopping_cart/shopping.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(
-      process.env.MONGODB_URI || 'mongodb://localhost:27017/shop_backend',
-    ),
+    MongooseModule.forRootAsync({
+      useFactory: (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGODB_URI'),
+      }),
+      inject: [ConfigService],
+    }),
     AuthModule,
     UserModule,
     ProductModule,
@@ -27,6 +30,7 @@ import { ShoppingCartModule } from './module/shopping_cart/shopping.module';
     OrderDetailModule,
     ShoppingCartModule,
   ],
+
   controllers: [AppController],
   providers: [AppService],
 })
