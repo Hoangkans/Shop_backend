@@ -47,10 +47,7 @@ export class AuthService {
   }
 
   private generateToken(user: Auth): TokenResponse {
-    const payload = { 
-      email: user.email, 
-      sub: user._id?.toString() || user.id 
-    };
+    const payload = { email: user.email, sub: user._id };
     return { access_token: this.jwtService.sign(payload) };
   }
 }

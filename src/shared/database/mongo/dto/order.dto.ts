@@ -23,5 +23,5 @@ export class UpdateOrderDto {
 
   @IsString()
   @IsNotEmpty()
-  status?: string;
+  status: string;
 }

@@ -6,7 +6,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { ProductModule } from './product/product.module';
-import { CategoryModule } from './category/category.module';
+import { CategoriesModule } from './category/category.module';
 import { OrderModule } from './orders/order.module';
 import { OrderDetailModule } from './order_detail/order_detail.module';
 import { ShoppingCartModule } from './shopping_cart/shopping.module';
@@ -22,7 +22,7 @@ import { ShoppingCartModule } from './shopping_cart/shopping.module';
     AuthModule,
     UserModule,
     ProductModule,
-    CategoryModule,
+    CategoriesModule,
     OrderModule,
     OrderDetailModule,
     ShoppingCartModule,

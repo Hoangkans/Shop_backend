@@ -1,14 +1,5 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Put,
-  Param,
-  Body,
-  UsePipes,
-  ValidationPipe,
-} from '@nestjs/common';
-import { CategoryService } from 'src/category/category.service';
+import { Controller, Get, Post, Put, Param, Body } from '@nestjs/common';
+import { CategoriesService } from 'src/category/category.service';
 import {
   CreateCategoryDto,
   UpdateCategoryDto,
@@ -16,7 +7,7 @@ import {
 
 @Controller('categories')
 export class CategoriesController {
-  constructor(private readonly categoryService: CategoryService) {}
+  constructor(private readonly categoryService: CategoriesService) {}
 
   @Get()
   async findAll() {
@@ -29,7 +20,10 @@ export class CategoriesController {
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() updateCategoryDto: UpdateCategoryDto) {
+  async update(
+    @Param('id') id: string,
+    @Body() updateCategoryDto: UpdateCategoryDto,
+  ) {
     return this.categoryService.update(id, updateCategoryDto);
   }
 

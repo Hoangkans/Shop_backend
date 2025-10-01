@@ -13,8 +13,8 @@ import { JwtStrategy } from './jwt.strategy';
     MongooseModule.forFeature([{ name: 'Auth', schema: AuthSchema }]),
     JwtModule.registerAsync({
       imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        secret: configService.get<string>('JWT_SECRET') || 'DaiDai123@',
+      useFactory: (configService: ConfigService) => ({
+        secret: configService.get<string>('JWT_SECRET'),
         signOptions: { expiresIn: '24h' },
       }),
       inject: [ConfigService],

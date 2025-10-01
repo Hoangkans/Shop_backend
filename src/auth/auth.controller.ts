@@ -1,8 +1,4 @@
-import {
-  Controller,
-  Post,
-  Body,
-} from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService, TokenResponse } from './auth.service';
 import { AuthDto, LoginDto } from 'src/shared/database/mongo/dto/auth.dto';
 

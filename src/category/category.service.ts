@@ -8,7 +8,7 @@ import {
 } from 'src/shared/database/mongo/dto/category.dto';
 
 @Injectable()
-export class CategoryService {
+export class CategoriesService {
   constructor(
     @InjectModel('Category') private categoryModel: Model<Category>,
   ) {}
